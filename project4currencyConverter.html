@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1,h2{ 
+    font-style: italic ; 
+    font-style: bold; 
+    color:rgb(0, 0, 0); 
+    
+}
+body{
+    background-color:rgb(230, 113, 183); 
+    text-align: center;
+    font-family: cursive; 
+}
+#id1,#id3{ 
+/* color:rgb(46, 200, 95);  */ 
+color:rgb(82, 39, 99)
+}
+button{ 
+    width:200px; 
+    height:100px; 
+    background-color: aqua;
+    font-size: larger;
+    font-style: italic;
+    font-family: fantasy;
+}
+    </style>
+</head>
+
+<body>
+    <h1 style="text-decoration: underline; text-decoration-style:double;">CURRENCY CONVERTER</h1>
+
+    <div id="id1"><h2>Enter input currency : </h2></div>
+
+    <textarea id="id2" placeholder="currency...."></textarea>
+
+    <br> 
+
+    <div id="id3"><h2>choose Input Currency : </h2></div>
+    <label>
+    <input type="radio" name="inChoice" value="1">
+    Indian Rupee
+    </label><br>
+    <label>
+        <input type="radio" name="inChoice" value="2">
+        United States Dollar
+        </label>
+        <br>
+        <label>
+            <input type="radio" name="inChoice" value="3">
+            Chinese Yuan
+            </label><br>
+            <label>
+                <input type="radio" name="inChoice" value="4">
+                United Arab Emirates Dirham
+                </label><br>
+                <label>
+                    <input type="radio" name="inChoice" value="5">
+                    Euro
+                    </label>
+
+
+
+                    <div id="id4"><h2>choose Output Currency : </h2></div>
+                    <label>
+                    <input type="radio" name="outChoice" value="1">
+                    Indian Rupee
+                    </label><br>
+                    <label>
+                        <input type="radio" name="outChoice" value="2">
+                        United States Dollar
+                        </label>
+                        <br>
+                        <label>
+                            <input type="radio" name="outChoice" value="3">
+                            Chinese Yuan
+                            </label><br>
+                            <label>
+                                <input type="radio" name="outChoice" value="4">
+                                United Arab Emirates Dirham
+                                </label><br>
+                                <label>
+                                    <input type="radio" name="outChoice" value="5">
+                                    Euro
+                                    </label> 
+
+                                    <br>
+                                    <br>
+
+<button onclick="convertCurrency()">CONVERT</button>
+<h2 id="output"></h2>
+
+    
+<script>
+    function convertCurrency(){ 
+    const input = document.getElementById("id2").value; 
+
+    if(input<0){ 
+        document.getElementById("output").innerText="Please enter a valid input...."; 
+    } 
+
+    const inChoice = document.querySelector('input[name="inChoice"]:checked'); 
+
+    const outChoice = document.querySelector('input[name="outChoice"]:checked'); 
+
+    if(!inChoice || !outChoice){ 
+        document.getElementById("output").innerText="Please select both input and output currencies...."; 
+        return ; 
+    } 
+
+    const inputCurrency = inChoice.value; 
+    const outputCurrency = outChoice.value; 
+
+    const rates = {
+                1: { 1: 1, 2: 0.012, 3: 0.085, 4: 0.044, 5: 0.011 }, // Indian Rupee
+                2: { 1: 83, 2: 1, 3: 7.05, 4: 3.67, 5: 0.93 },       // United States Dollar
+                3: { 1: 11.72, 2: 0.14, 3: 1, 4: 0.52, 5: 0.13 },    // Chinese Yuan
+                4: { 1: 22.5, 2: 0.27, 3: 1.93, 4: 1, 5: 0.25 },     // UAE Dirham
+                5: { 1: 89.7, 2: 1.08, 3: 7.55, 4: 4.06, 5: 1 }      // Euro
+            }; 
+
+            const rate = rates[inputCurrency][outputCurrency]; 
+            const result = input*rate; 
+
+            document.getElementById("output").innerText=`${input} (Currency ${inputCurrency}) = ${result.toFixed(2)} (Currency ${outputCurrency})`;
+
+} 
+
+</script>
+
+</body>
+
+</html>
+
+

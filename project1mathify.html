@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathify</title>
+    <style>
+        body {
+            background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20200530/pngtree-cute-hand-drawn-style-mathematics-education-pink-plaid-background-image_337364.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            text-align: center;
+            font-family: cursive;
+        }
+        #parent {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            background-color: rgb(192, 120, 168);
+            padding: 10px;
+        }
+        .c1, .c2 {
+            display: flex;
+            align-items: center;
+        }
+        #game-container {
+            margin-top: 50px;
+        }
+        #instructions {
+            font-size: 24px;
+            color: rgb(194, 62, 86);
+            margin-bottom: 20px;
+        }
+        button {
+            font-size: 22px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: 2px solid aqua;
+            background-color: rgb(90, 175, 175);
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: rgb(70, 155, 155);
+        }
+        h1 {
+            font-family: cursive;
+            font-size: 80px;
+            color: rgb(194, 62, 86);
+        }
+    </style>
+</head>
+<body>
+    <div id="parent">
+        <span class="c1"><img src="https://cdn.prod.website-files.com/5d703defd989f56c9fb0d685/5d9b9ca5e339885b98131c45_creative-thinking.jpeg" style="width:80px;height:60px;"></span>
+        <span class="c1"><p style="color:rgb(194, 62, 86); font-size: 22px;"><b>MATH<i>ify</i></b></p></span>
+        <span class="c2"><p style="color:rgb(194, 62, 86); font-size: 22px;"><b>LEVEL : </b></p></span>
+        <span class="c2"><img src="https://i.pinimg.com/736x/75/4b/71/754b710a3277c52f8d67a4b648dc0f82.jpg" style="width:40px;height:50px;"></span>
+        <button class="c2"><b>Sign in</b></button>
+    </div>
+    <div id="game-container">
+        <h1><b>MATH<i>ify</i></b></h1>
+        <p id="instructions">Think of any number in your mind.</p>
+        <button onclick="nextStep()">Next</button>
+        <p id="result" style="font-size: 24px; color: rgb(0, 128, 0); display: none;"></p>
+    </div>
+    <script>
+        let step = 0;
+        let randomAddition = Math.floor(Math.random() * 50) + 1;
+        let result = randomAddition / 2;
+        
+        let steps = [
+            "Double the number.",
+            "Add " + randomAddition + " to the result.",
+            "Divide the total by 2.",
+            "Subtract your original number.",
+            "Your final result is: " + result + " 🎉"
+        ];
+        
+        function nextStep() {
+            if (step < steps.length) {
+                document.getElementById("instructions").innerText = steps[step];
+                step++;
+            }
+            if (step === steps.length) {
+                document.getElementById("result").style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
